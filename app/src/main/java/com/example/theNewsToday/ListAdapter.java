@@ -54,14 +54,14 @@ public class ListAdapter extends BaseAdapter {
 
         HashMap<String, String> article = data.get(position);
         try{
-            vh.author.setText(article.get(MainActivity.KEY_AUTHOR));
-            vh.title.setText(article.get(MainActivity.KEY_TITLE));
-            vh.time.setText(article.get(MainActivity.KEY_PUBLISHEDAT));
-            vh.sdetails.setText(article.get(MainActivity.KEY_DESCRIPTION));
+            vh.author.setText(article.get(NewsActivity.KEY_AUTHOR));
+            vh.title.setText(article.get(NewsActivity.KEY_TITLE));
+            vh.time.setText(article.get(NewsActivity.KEY_PUBLISHEDAT));
+            vh.sdetails.setText(article.get(NewsActivity.KEY_DESCRIPTION));
 
-            if (Objects.requireNonNull(article.get(MainActivity.KEY_URLTOIMAGE)).length() != 0) {
+            if (Objects.requireNonNull(article.get(NewsActivity.KEY_URLTOIMAGE)).length() != 0) {
                 Picasso.get()
-                        .load(article.get(MainActivity.KEY_URLTOIMAGE))
+                        .load(article.get(NewsActivity.KEY_URLTOIMAGE))
                         .resize(300, 200)
                         .centerCrop()
                         .into(vh.galleryImage);

@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
 
     String API_KEY = "8190df9eb51445228e397e4185311a66";
     String CHANNEL = "time";
@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), "We had a problem with reading the news, Try again!", Toast.LENGTH_SHORT).show();
                 }
-                ListAdapter adapter = new ListAdapter(MainActivity.this, newsList);
+                ListAdapter adapter = new ListAdapter(NewsActivity.this, newsList);
                 listNews.setAdapter(adapter);
                 listNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
-                        Intent i = new Intent(MainActivity.this, view_activity.class);
+                        Intent i = new Intent(NewsActivity.this, ViewActivity.class);
                         i.putExtra("url", newsList.get(+position).get(KEY_URL));
                         startActivity(i);
                     }
