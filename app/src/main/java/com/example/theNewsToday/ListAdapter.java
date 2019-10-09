@@ -1,6 +1,10 @@
 package com.example.theNewsToday;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +12,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -60,11 +65,7 @@ public class ListAdapter extends BaseAdapter {
             vh.sdetails.setText(article.get(NewsActivity.KEY_DESCRIPTION));
 
             if (Objects.requireNonNull(article.get(NewsActivity.KEY_URLTOIMAGE)).length() != 0) {
-                Picasso.get()
-                        .load(article.get(NewsActivity.KEY_URLTOIMAGE))
-                        .resize(300, 200)
-                        .centerCrop()
-                        .into(vh.galleryImage);
+                setImage(vh.galleryImage,300,200,article.get(NewsActivity.KEY_URLTOIMAGE));
             } else {
                 vh.galleryImage.setVisibility(View.GONE);
             }
@@ -72,6 +73,33 @@ public class ListAdapter extends BaseAdapter {
             Log.e("LoadThumbnail", String.valueOf(e));
         }
         return convertView;
+    }
+    @SuppressLint("StaticFieldLeak")
+    public void setImage(final ImageView view, final int width, final int height, final String path){
+        new AsyncTask<Void,Void,Bitmap>(){
+
+            @Override
+            protected Bitmap doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(path);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+                    Bitmap bp = BitmapFactory.decodeStream(input);
+                    return Bitmap.createScaledBitmap(bp, width, height, true);
+                } catch (IOException e) {
+                    return null;
+                }
+            }
+
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                super.onPostExecute(bitmap);
+                view.setImageBitmap(bitmap);
+            }
+        }.execute();
     }
 }
 

@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class NewsActivity extends AppCompatActivity {
 
     String API_KEY = "8190df9eb51445228e397e4185311a66";
-    String CHANNEL = "time";
+    String CHANNEL = "cnn";
     ListView listNews;
     ProgressBar progressBar;
 
