@@ -1,6 +1,7 @@
 package com.example.theNewsToday;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class ViewActivity extends AppCompatActivity {
     WebView webView;
     ProgressBar progressBar;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,6 @@ public class ViewActivity extends AppCompatActivity {
                 super.onPageStarted(view, url,favicon);
                 progressBar.setVisibility(View.VISIBLE);
             }
-
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                progressBar.setVisibility(View.VISIBLE);
-//                view.loadUrl(url);
-//                return true;
-//            }
 
             @Override
             public void onPageFinished(WebView view, final String url) {

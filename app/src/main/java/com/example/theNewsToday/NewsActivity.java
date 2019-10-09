@@ -23,15 +23,11 @@ public class NewsActivity extends AppCompatActivity {
     String CHANNEL = "cnn";
     ListView listNews;
     ProgressBar progressBar;
-
     ArrayList<HashMap<String, String>> newsList = new ArrayList<>();
-    static final String KEY_AUTHOR = "author";
-    static final String KEY_TITLE = "title";
-    static final String KEY_DESCRIPTION = "description";
-    static final String KEY_URL = "url";
-    static final String KEY_URLTOIMAGE = "urlToImage";
-    static final String KEY_PUBLISHEDAT = "publishedAt";
-
+    static final String TITLE = "title";
+    static final String DESCRIPTION = "description";
+    static final String URL = "url";
+    static final String URL_TO_IMAGE = "urlToImage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +62,10 @@ public class NewsActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             HashMap<String, String> map = new HashMap<>();
-                            map.put(KEY_AUTHOR, jsonObject.optString(KEY_AUTHOR));
-                            map.put(KEY_TITLE, jsonObject.optString(KEY_TITLE));
-                            map.put(KEY_DESCRIPTION, jsonObject.optString(KEY_DESCRIPTION));
-                            map.put(KEY_URL, jsonObject.optString(KEY_URL));
-                            map.put(KEY_URLTOIMAGE, jsonObject.optString(KEY_URLTOIMAGE));
-                            map.put(KEY_PUBLISHEDAT, jsonObject.optString(KEY_PUBLISHEDAT));
+                            map.put(TITLE, jsonObject.optString(TITLE));
+                            map.put(DESCRIPTION, jsonObject.optString(DESCRIPTION));
+                            map.put(URL, jsonObject.optString(URL));
+                            map.put(URL_TO_IMAGE, jsonObject.optString(URL_TO_IMAGE));
                             newsList.add(map);
                         }
                     }
@@ -84,7 +78,7 @@ public class NewsActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
                         Intent i = new Intent(NewsActivity.this, ViewActivity.class);
-                        i.putExtra("url", newsList.get(+position).get(KEY_URL));
+                        i.putExtra("url", newsList.get(+position).get(URL));
                         startActivity(i);
                     }
                 });

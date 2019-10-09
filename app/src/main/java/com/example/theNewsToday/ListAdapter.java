@@ -43,29 +43,21 @@ public class ListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(activity).inflate(
                     R.layout.list_item , parent, false);
             vh.galleryImage = convertView.findViewById(R.id.galleryImage);
-            vh.author = convertView.findViewById(R.id.author);
             vh.title = convertView.findViewById(R.id.title);
-            vh.sdetails = convertView.findViewById(R.id.sdetails);
-            vh.time = convertView.findViewById(R.id.time);
+            vh.description = convertView.findViewById(R.id.description);
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
         }
         vh.galleryImage.setId(position);
-        vh.author.setId(position);
         vh.title.setId(position);
-        vh.sdetails.setId(position);
-        vh.time.setId(position);
-
+        vh.description.setId(position);
         HashMap<String, String> article = data.get(position);
         try{
-            vh.author.setText(article.get(NewsActivity.KEY_AUTHOR));
-            vh.title.setText(article.get(NewsActivity.KEY_TITLE));
-            vh.time.setText(article.get(NewsActivity.KEY_PUBLISHEDAT));
-            vh.sdetails.setText(article.get(NewsActivity.KEY_DESCRIPTION));
-
-            if (Objects.requireNonNull(article.get(NewsActivity.KEY_URLTOIMAGE)).length() != 0) {
-                setImage(vh.galleryImage,300,200,article.get(NewsActivity.KEY_URLTOIMAGE));
+            vh.title.setText(article.get(NewsActivity.TITLE));
+            vh.description.setText(article.get(NewsActivity.DESCRIPTION));
+            if (Objects.requireNonNull(article.get(NewsActivity.URL_TO_IMAGE)).length() != 0) {
+                setImage(vh.galleryImage,300,230,article.get(NewsActivity.URL_TO_IMAGE));
             } else {
                 vh.galleryImage.setVisibility(View.GONE);
             }
@@ -105,5 +97,5 @@ public class ListAdapter extends BaseAdapter {
 
 class ViewHolder {
     ImageView galleryImage;
-    TextView author, title, sdetails, time;
+    TextView title, description;
 }

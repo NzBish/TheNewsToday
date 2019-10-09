@@ -14,8 +14,6 @@ class Connection {
         try {
             url = new URL(destination);
             connection = (HttpURLConnection) url.openConnection();
-           // connection.setRequestProperty("content-type", "application/json;  charset=utf-8");
-           // connection.setRequestProperty("Content-Language", "en-US");
             connection.setUseCaches(false);
             connection.setDoInput(true);
             connection.setDoOutput(false);
@@ -26,7 +24,6 @@ class Connection {
                 is = connection.getErrorStream();
             else
                 is = connection.getInputStream();
-
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
             String line;
             StringBuilder address = new StringBuilder();
