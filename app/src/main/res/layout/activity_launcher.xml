@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/gridTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_your_news_source"
+            android:textSize="34sp"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <GridLayout
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:columnCount="2"
+        android:rowCount="4"
+        android:alignmentMode="alignMargins"
+        android:padding="14dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageViewBBC"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:contentDescription="@string/my_news_app"
+            android:padding="5dp"
+            app:srcCompat="@drawable/bbcnewslogo" />
+
+        <ImageView
+            android:id="@+id/imageViewNYTimes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:contentDescription="@string/my_news_app"
+            android:padding="5dp"
+            app:srcCompat="@drawable/newyorktimeslogo" />
+        <ImageView
+            android:id="@+id/imageViewEngadget"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:srcCompat="@drawable/engadgetlogo"
+            android:padding="5dp"
+            android:contentDescription="@string/my_news_app" />
+
+        <ImageView
+            android:id="@+id/imageViewTime"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:contentDescription="@string/my_news_app"
+            android:padding="5dp"
+            app:srcCompat="@drawable/timelogo" />
+        <ImageView
+            android:id="@+id/imageViewCNN"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:srcCompat="@drawable/cnnlogo"
+            android:padding="5dp"
+            android:contentDescription="@string/my_news_app" />
+
+        <ImageView
+            android:id="@+id/imageViewWired"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:contentDescription="@string/my_news_app"
+            android:padding="5dp"
+            app:srcCompat="@drawable/wiredlogo" />
+    </GridLayout>
+
+
+</LinearLayout>
