@@ -1,16 +1,22 @@
 package com.example.theNewsToday;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,21 +29,36 @@ public class NewsActivity extends AppCompatActivity {
     public static String channel = "";
     ListView listNews;
     ProgressBar progressBar;
+    int mPosition = 0;
+     private static final String POSITION = "p";
     ArrayList<HashMap<String, String>> newsList = new ArrayList<>();
     static final String TITLE = "title";
     static final String DESCRIPTION = "description";
     static final String URL = "url";
     static final String URL_TO_IMAGE = "urlToImage";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(savedInstanceState!=null){
+            mPosition=savedInstanceState.getInt(POSITION);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listNews = findViewById(R.id.listNews);
         progressBar = findViewById(R.id.progressBar);
         listNews.setEmptyView(progressBar);
+        setTitle(channel);
         DownloadNews newsTask = new DownloadNews();
         newsTask.execute();
+        listNews.setSelection(mPosition);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        mPosition = listNews.getFirstVisiblePosition();
+        outState.putInt(POSITION,mPosition);
+        super.onSaveInstanceState(outState);
     }
 
     @SuppressLint("StaticFieldLeak")
