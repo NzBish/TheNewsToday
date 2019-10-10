@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class NewsActivity extends AppCompatActivity {
 
     String API_KEY = "8190df9eb51445228e397e4185311a66";
-    String CHANNEL = "cnn";
+    public static String channel = "";
     ListView listNews;
     ProgressBar progressBar;
     ArrayList<HashMap<String, String>> newsList = new ArrayList<>();
@@ -48,7 +48,7 @@ public class NewsActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(String... args) {
-            return Connection.startConnection("https://newsapi.org/v1/articles?source=" + CHANNEL + "&sortBy=top&apiKey=" + API_KEY);
+            return Connection.startConnection("https://newsapi.org/v1/articles?source=" + channel + "&sortBy=top&apiKey=" + API_KEY);
         }
 
         @Override
