@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nightMode"
+        android:icon="@drawable/ic_night"
+        android:title="@string/nightmode"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/dayMode"
+        android:icon="@drawable/ic_day"
+        android:title="@string/daymode"
+        app:showAsAction="ifRoom"/>
+
+</menu>
