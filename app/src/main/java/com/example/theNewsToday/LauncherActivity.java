@@ -22,7 +22,6 @@ public class LauncherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
         TextView textView = findViewById(R.id.gridTitle);
-       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         textView.setSelected(true);
         gridView = findViewById(R.id.gridView);
         for(int i=0;i<gridView.getChildCount();i++){
