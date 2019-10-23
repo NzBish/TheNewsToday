@@ -1,22 +1,18 @@
 package com.example.theNewsToday;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +44,12 @@ public class NewsActivity extends AppCompatActivity {
         listNews = findViewById(R.id.listNews);
         progressBar = findViewById(R.id.progressBar);
         listNews.setEmptyView(progressBar);
-        setTitle(channel);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayUseLogoEnabled(true);
+        }
+        loadTitle(actionBar);
         DownloadNews newsTask = new DownloadNews();
         newsTask.execute();
         listNews.setSelection(mPosition);
@@ -106,6 +107,29 @@ public class NewsActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "No news on this channel", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+    void loadTitle(ActionBar actionBar){
+        switch(channel){
+            case "bbc-news": setTitle("  BBC NEWS");
+                actionBar.setLogo(R.drawable.bbcnewslogosmall);
+                break;
+            case "the-new-york-times": setTitle("  NEW YORK TIMES");
+                actionBar.setLogo(R.drawable.newyorktimeslogosmall);
+                break;
+            case "engadget": setTitle("  ENGADGET");
+                actionBar.setLogo(R.drawable.engadgetlogosmall);
+                break;
+            case "time": setTitle("  TIME");
+                actionBar.setLogo(R.drawable.timelogosmall);
+                break;
+            case "cnn": setTitle("  CNN");
+                actionBar.setLogo(R.drawable.cnnlogosmall);
+                break;
+            case "national-geographic": setTitle("  NATIONAL GEOGRAPHIC");
+                actionBar.setLogo(R.drawable.nationalgeographiclogosmall);
+                break;
+
         }
     }
 }

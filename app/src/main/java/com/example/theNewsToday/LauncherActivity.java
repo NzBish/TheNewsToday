@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -16,6 +16,8 @@ public class LauncherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+        TextView textView = findViewById(R.id.gridTitle);
+        textView.setSelected(true);
         gridView = findViewById(R.id.gridView);
         for(int i=0;i<gridView.getChildCount();i++){
             View view = gridView.getChildAt(i);
@@ -34,7 +36,7 @@ public class LauncherActivity extends AppCompatActivity {
                       break;
                       case 4: NewsActivity.channel = "cnn";
                       break;
-                      case 5: NewsActivity.channel = "wired";
+                      case 5: NewsActivity.channel = "national-geographic";
                       break;
 
                   }

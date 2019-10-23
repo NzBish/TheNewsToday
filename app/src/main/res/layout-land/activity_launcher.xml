@@ -14,11 +14,17 @@
 
         <TextView
             android:id="@+id/gridTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/select_your_news_source"
+            android:text="@string/select_your_news_source_from_the_options_below"
             android:textSize="34sp"
-            android:layout_centerInParent="true"
+            android:textAlignment = "center"
+            android:ellipsize = "marquee"
+            android:fadingEdge = "horizontal"
+            android:marqueeRepeatLimit = "marquee_forever"
+            android:scrollHorizontally = "true"
+            android:singleLine = "true"
+            android:fontFamily="@font/robotoslabbold"
             />
     </RelativeLayout>
 
@@ -82,14 +88,14 @@
             android:contentDescription="@string/my_news_app" />
 
         <ImageView
-            android:id="@+id/imageViewWired"
+            android:id="@+id/imageViewNatGeo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:contentDescription="@string/my_news_app"
             android:padding="5dp"
-            app:srcCompat="@drawable/wiredlogo" />
+            app:srcCompat="@drawable/nationalgeographiclogo" />
     </GridLayout>
 
 

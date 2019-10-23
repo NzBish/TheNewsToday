@@ -3,4 +3,5 @@
     <string name="title_activity_view_activity">view_activity</string>
     <string name="select_your_news_source">Select your News Source</string>
     <string name="my_news_app">my news app</string>
+    <string name="select_your_news_source_from_the_options_below">Select your news source from the options below....</string>
 </resources>

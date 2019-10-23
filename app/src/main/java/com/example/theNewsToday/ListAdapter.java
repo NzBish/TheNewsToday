@@ -71,18 +71,18 @@ public class ListAdapter extends BaseAdapter {
         new AsyncTask<Void,Void,Bitmap>(){
 
             @Override
-            protected Bitmap doInBackground(Void... voids) {
-                try {
-                    URL url = new URL(path);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    Bitmap bp = BitmapFactory.decodeStream(input);
-                    return Bitmap.createScaledBitmap(bp, width, height, true);
-                } catch (IOException e) {
-                    return null;
-                }
+                protected Bitmap doInBackground(Void... voids) {
+                    try {
+                        URL url = new URL(path);
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setDoInput(true);
+                        connection.connect();
+                        InputStream input = connection.getInputStream();
+                        Bitmap bp = BitmapFactory.decodeStream(input);
+                        return Bitmap.createScaledBitmap(bp, width, height, true);
+                    } catch (IOException e) {
+                        return null;
+                    }
             }
 
 
