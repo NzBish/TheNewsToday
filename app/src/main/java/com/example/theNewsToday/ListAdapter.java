@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+//listadapter for newsactivity
+
 public class ListAdapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<HashMap<String, String>> data;
@@ -66,8 +68,9 @@ public class ListAdapter extends BaseAdapter {
         }
         return convertView;
     }
+    //download and display headline image at correct res
     @SuppressLint("StaticFieldLeak")
-    public void setImage(final ImageView view, final int width, final int height, final String path){
+    private void setImage(final ImageView view, final int width, final int height, final String path){
         new AsyncTask<Void,Void,Bitmap>(){
 
             @Override

@@ -23,10 +23,12 @@ public class LauncherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launcher);
         TextView textView = findViewById(R.id.gridTitle);
         textView.setSelected(true);
+        //set up gridview and onclicklistener
         gridView = findViewById(R.id.gridView);
         for(int i=0;i<gridView.getChildCount();i++){
             View view = gridView.getChildAt(i);
             final int j = i;
+            //sets channel variable to news channel
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -51,7 +53,7 @@ public class LauncherActivity extends AppCompatActivity {
             });
         }
     }
-
+//setup options for night/day mode
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

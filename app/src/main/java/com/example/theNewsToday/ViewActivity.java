@@ -24,7 +24,9 @@ public class ViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
         progressBar = findViewById(R.id.progressBar);
+        //setup webview for news article
         webView = findViewById(R.id.webView);
+        //enable javascript
         webView.getSettings().setJavaScriptEnabled(true);
         // Enable responsive layout
         webView.getSettings().setUseWideViewPort(true);
@@ -35,6 +37,7 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url,favicon);
+                //display loading icon
                 progressBar.setVisibility(View.VISIBLE);
             }
 

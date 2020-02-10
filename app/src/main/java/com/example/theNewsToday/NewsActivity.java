@@ -24,13 +24,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NewsActivity extends AppCompatActivity {
-
+    //required for newsapi.org
     String API_KEY = "8190df9eb51445228e397e4185311a66";
     public static String channel = "";
     ListView listNews;
     ProgressBar progressBar;
     int mPosition = 0;
      private static final String POSITION = "p";
+     //list of news highlights
     ArrayList<HashMap<String, String>> newsList = new ArrayList<>();
     static final String TITLE = "title";
     static final String DESCRIPTION = "description";
@@ -65,7 +66,7 @@ public class NewsActivity extends AppCompatActivity {
         outState.putInt(POSITION,mPosition);
         super.onSaveInstanceState(outState);
     }
-
+    //downloads news headlines for selected channel from newsapi.org
     @SuppressLint("StaticFieldLeak")
     class DownloadNews extends AsyncTask<String, Void, String> {
         @Override
@@ -85,6 +86,7 @@ public class NewsActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(news);
                     JSONArray jsonArray = jsonResponse.optJSONArray("articles");
                     if (jsonArray != null) {
+                        //parse jsonarray and put into hashmap
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             HashMap<String, String> map = new HashMap<>();
@@ -96,7 +98,7 @@ public class NewsActivity extends AppCompatActivity {
                         }
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "We had a problem with reading the news, Try again!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Sorry we had a problem with reading the news, Try again!", Toast.LENGTH_SHORT).show();
                 }
                 ListAdapter adapter = new ListAdapter(NewsActivity.this, newsList);
                 listNews.setAdapter(adapter);
@@ -113,6 +115,7 @@ public class NewsActivity extends AppCompatActivity {
             }
         }
     }
+    //load title and set news icon in actionbar
     void loadTitle(ActionBar actionBar){
         switch(channel){
             case "bbc-news": setTitle("  BBC NEWS");
@@ -136,6 +139,7 @@ public class NewsActivity extends AppCompatActivity {
 
         }
     }
+    //add night/dark mode options to actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

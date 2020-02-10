@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+//class for connecting to url
+
 class Connection {
 
     static String startConnection(String destination) {
